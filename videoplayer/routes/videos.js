@@ -40,13 +40,32 @@ router.post('/video', function(req, res, next){
     newVideo.title = req.body.title;
     newVideo.url = req.body.url;
     newVideo.description = req.body.description;
-    newVideo.save(function(err, video){
+    newVideo.save(function(err, insertedVideo){
         if(err){
             res.send("Error saving video");
         }else{
-            res.json(video);
+            res.json(insertedVideo);
         }
     });
+})
+
+router.put('/video/:id', function(req, res, next){
+    console.log('Update a video');
+    Video.findByIdAndUpdate(req.params.id,
+    {
+        $set: {title: req.body.title, url: req.body.url, description: req.body.description}
+    },
+    {
+        new: true
+    },
+    function(err, updatedVideo){
+        if(err){
+            res.send("Error updating video");
+        }else{
+            res.json(updatedVideo);
+        }
+    }
+    )
 })
 
 module.exports = router;

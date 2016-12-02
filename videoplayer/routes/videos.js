@@ -11,7 +11,7 @@ mongoose.connect(db, function(err){
 });
 
 router.get('/videos', function(req, res, next){
-    console.log('Getting videos');
+    console.log('Get request for all videos');
     Video.find({})
     .exec(function(err, videos){
         if(err){
@@ -23,7 +23,7 @@ router.get('/videos', function(req, res, next){
 })
 
 router.get('/videos/:id', function(req, res, next){
-    console.log('Getting videos');
+    console.log('Get request for a single video');
     Video.findById(req.params.id)
     .exec(function(err, videos){
         if(err){
@@ -32,6 +32,21 @@ router.get('/videos/:id', function(req, res, next){
             res.json(videos);
         }
     })
+})
+
+router.post('/video', function(req, res, next){
+    console.log('Post a video');
+    var newVideo = new Video();
+    newVideo.title = req.body.title;
+    newVideo.url = req.body.url;
+    newVideo.description = req.body.description;
+    newVideo.save(function(err, video){
+        if(err){
+            res.send("Error saving video");
+        }else{
+            res.json(video);
+        }
+    });
 })
 
 module.exports = router;

@@ -9,24 +9,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var VideoListComponent = (function () {
-    function VideoListComponent() {
+var VideoCenterComponent = (function () {
+    function VideoCenterComponent() {
         this.title = "Playlist";
-        this.SelectVideo = new core_1.EventEmitter();
+        this.videos = [
+            { "title": "First Video", "url": "https://www.youtube.com/embed/YYnf5vJRuUY", "desc": "Test Description 1" },
+            { "title": "Second Video", "url": "https://www.youtube.com/embed/4YZPfX5sKKI", "desc": "Test Description 2" }
+        ];
     }
-    VideoListComponent.prototype.onSelect = function (vid) {
-        this.SelectVideo.emit(vid);
+    VideoCenterComponent.prototype.onSelectVideo = function (video) {
+        this.selectedVideo = video;
+        console.log(this.selectedVideo);
     };
-    VideoListComponent = __decorate([
+    ;
+    VideoCenterComponent = __decorate([
         core_1.Component({
-            selector: 'video-list',
-            templateUrl: 'app/videos/video-list.component.html',
-            inputs: ['videos'],
-            outputs: ['SelectVideo']
+            templateUrl: 'app/videos/video-center.component.html',
         }), 
         __metadata('design:paramtypes', [])
-    ], VideoListComponent);
-    return VideoListComponent;
+    ], VideoCenterComponent);
+    return VideoCenterComponent;
 }());
-exports.VideoListComponent = VideoListComponent;
-//# sourceMappingURL=video-list.component.js.map
+exports.VideoCenterComponent = VideoCenterComponent;
+//# sourceMappingURL=video-center.component.js.map

@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home.component';
-import { VideoListComponent } from './videos/video-list.component';
+import { VideoCenterComponent } from './videos/video-center.component';
+
 
 const routes: Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full'},
     {path: 'home', component: HomeComponent},
-    {path: 'videos', component: VideoListComponent}
+    {path: 'videos', component: VideoCenterComponent}
 ]
 
 @NgModule({
@@ -21,4 +22,4 @@ export class AppRoutingModule{
 
 }
 
-export const routingComponents = [HomeComponent, VideoListComponent];
+export const routingComponents = [HomeComponent, VideoCenterComponent];

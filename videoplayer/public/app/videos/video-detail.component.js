@@ -9,24 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var VideoListComponent = (function () {
-    function VideoListComponent() {
-        this.title = "Playlist";
-        this.SelectVideo = new core_1.EventEmitter();
+var VideoDetailComponent = (function () {
+    function VideoDetailComponent() {
     }
-    VideoListComponent.prototype.onSelect = function (vid) {
-        this.SelectVideo.emit(vid);
-    };
-    VideoListComponent = __decorate([
+    VideoDetailComponent = __decorate([
         core_1.Component({
-            selector: 'video-list',
-            templateUrl: 'app/videos/video-list.component.html',
-            inputs: ['videos'],
-            outputs: ['SelectVideo']
+            selector: 'video-detail',
+            templateUrl: 'app/videos/video-detail.component.html',
+            inputs: ['video']
         }), 
         __metadata('design:paramtypes', [])
-    ], VideoListComponent);
-    return VideoListComponent;
+    ], VideoDetailComponent);
+    return VideoDetailComponent;
 }());
-exports.VideoListComponent = VideoListComponent;
-//# sourceMappingURL=video-list.component.js.map
+exports.VideoDetailComponent = VideoDetailComponent;
+//# sourceMappingURL=video-detail.component.js.map

@@ -11,11 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var home_component_1 = require('./home.component');
-var video_list_component_1 = require('./videos/video-list.component');
+var video_center_component_1 = require('./videos/video-center.component');
 var routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: home_component_1.HomeComponent },
-    { path: 'videos', component: video_list_component_1.VideoListComponent }
+    { path: 'videos', component: video_center_component_1.VideoCenterComponent }
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {
@@ -34,5 +34,5 @@ var AppRoutingModule = (function () {
     return AppRoutingModule;
 }());
 exports.AppRoutingModule = AppRoutingModule;
-exports.routingComponents = [home_component_1.HomeComponent, video_list_component_1.VideoListComponent];
+exports.routingComponents = [home_component_1.HomeComponent, video_center_component_1.VideoCenterComponent];
 //# sourceMappingURL=app-routing.module.js.map

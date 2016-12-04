@@ -9,21 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
-var app_routing_module_1 = require('./app-routing.module');
-var app_component_1 = require('./app.component');
-var AppModule = (function () {
-    function AppModule() {
+var VideoListComponent = (function () {
+    function VideoListComponent() {
+        this.title = "Playlist";
+        this.videos = [
+            { "title": "First Video", "url": "www.test.com", "desc": "Test Description 1" },
+            { "title": "Second Video", "url": "www.test.com", "desc": "Test Description 2" }
+        ];
     }
-    AppModule = __decorate([
-        core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, app_routing_module_1.AppRoutingModule],
-            declarations: [app_component_1.AppComponent, app_routing_module_1.routingComponents],
-            bootstrap: [app_component_1.AppComponent]
+    VideoListComponent.prototype.onSelect = function (vid) {
+        console.log(JSON.stringify(vid));
+    };
+    VideoListComponent = __decorate([
+        core_1.Component({
+            selector: 'video-list',
+            templateUrl: 'app/videos/video-list.component.html',
         }), 
         __metadata('design:paramtypes', [])
-    ], AppModule);
-    return AppModule;
+    ], VideoListComponent);
+    return VideoListComponent;
 }());
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+exports.VideoListComponent = VideoListComponent;
+//# sourceMappingURL=video-list.component.js.map

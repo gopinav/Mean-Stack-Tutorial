@@ -1,11 +1,9 @@
 
     <div class="row">
-        <div class="col-sm-8">
-        
-            <video-detail *ngIf="selectedVideo" [video]="selectedVideo"></video-detail>
+        <div class="col-sm-8">        
+            <video-detail *ngIf="selectedVideo" (closeForm)="onCloseDetailForm($event)" [video]="selectedVideo"></video-detail>
         </div>
-        <div class="col-sm-4">
-        
+        <div class="col-sm-4">        
             <video-list [videos]="videos" (SelectVideo)="onSelectVideo($event)"></video-list>
         </div>
     </div>

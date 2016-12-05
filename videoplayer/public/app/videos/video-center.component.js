@@ -22,6 +22,10 @@ var VideoCenterComponent = (function () {
         console.log(this.selectedVideo);
     };
     ;
+    VideoCenterComponent.prototype.onCloseDetailForm = function (event) {
+        this.selectedVideo = null;
+    };
+    ;
     VideoCenterComponent = __decorate([
         core_1.Component({
             templateUrl: 'app/videos/video-center.component.html',

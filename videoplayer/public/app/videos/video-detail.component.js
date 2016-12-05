@@ -11,12 +11,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var VideoDetailComponent = (function () {
     function VideoDetailComponent() {
+        this.editTitle = false;
+        this.closeForm = new core_1.EventEmitter();
     }
+    VideoDetailComponent.prototype.onTitleClick = function () {
+        this.editTitle = true;
+    };
+    VideoDetailComponent.prototype.ngOnChanges = function () {
+        this.editTitle = false;
+    };
+    VideoDetailComponent.prototype.onButtonOkClick = function () {
+        this.closeForm.emit({});
+    };
     VideoDetailComponent = __decorate([
         core_1.Component({
             selector: 'video-detail',
             templateUrl: 'app/videos/video-detail.component.html',
-            inputs: ['video']
+            inputs: ['video'],
+            outputs: ['closeForm']
         }), 
         __metadata('design:paramtypes', [])
     ], VideoDetailComponent);

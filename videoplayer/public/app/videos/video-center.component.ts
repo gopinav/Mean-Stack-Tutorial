@@ -17,6 +17,9 @@ export class VideoCenterComponent {
     this.selectedVideo = video;
     console.log(this.selectedVideo);
   };
+  onCloseDetailForm(event: any){
+    this.selectedVideo = null;
+  };
 
 
 }

@@ -3,7 +3,8 @@
         <div class="col-sm-8">        
             <video-detail *ngIf="selectedVideo" (closeForm)="onCloseDetailForm($event)" [video]="selectedVideo"></video-detail>
         </div>
-        <div class="col-sm-4">        
+        <div class="col-sm-4">  
+            <button type="button" class="btn btn-default" (click)="newVideo()">New </button>      
             <video-list [videos]="videos" (SelectVideo)="onSelectVideo($event)"></video-list>
         </div>
     </div>

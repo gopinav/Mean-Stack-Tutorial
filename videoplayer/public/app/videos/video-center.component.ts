@@ -20,6 +20,10 @@ export class VideoCenterComponent {
   onCloseDetailForm(event: any){
     this.selectedVideo = null;
   };
-
+  newVideo(){
+    var v: Video = { title: "New Video", url: ""};
+    this.videos.push(v);
+    this.selectedVideo = v;
+  }
 
 }

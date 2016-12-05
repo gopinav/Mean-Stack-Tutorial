@@ -26,6 +26,11 @@ var VideoCenterComponent = (function () {
         this.selectedVideo = null;
     };
     ;
+    VideoCenterComponent.prototype.newVideo = function () {
+        var v = { title: "New Video", url: "" };
+        this.videos.push(v);
+        this.selectedVideo = v;
+    };
     VideoCenterComponent = __decorate([
         core_1.Component({
             templateUrl: 'app/videos/video-center.component.html',

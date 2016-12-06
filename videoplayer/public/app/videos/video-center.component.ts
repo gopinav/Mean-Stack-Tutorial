@@ -7,6 +7,8 @@ export class VideoCenterComponent {
   title: string = "Playlist";
   videos : Array<Video>;
   selectedVideo: Video;
+  private shownewVideo: boolean = true;
+
   constructor(){
       this.videos = [
         {"title": "First Video","url":"https://www.youtube.com/embed/YYnf5vJRuUY","desc":"Test Description 1"},
@@ -20,10 +22,15 @@ export class VideoCenterComponent {
   onCloseDetailForm(event: any){
     this.selectedVideo = null;
   };
+  /*
   newVideo(){
     var v: Video = { title: "New Video", url: ""};
     this.videos.push(v);
     this.selectedVideo = v;
   }
+  */
 
+  newVideo(){
+    this.shownewVideo = false;
+  }
 }

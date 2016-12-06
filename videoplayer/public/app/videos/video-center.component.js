@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var VideoCenterComponent = (function () {
     function VideoCenterComponent() {
         this.title = "Playlist";
+        this.shownewVideo = true;
         this.videos = [
             { "title": "First Video", "url": "https://www.youtube.com/embed/YYnf5vJRuUY", "desc": "Test Description 1" },
             { "title": "Second Video", "url": "https://www.youtube.com/embed/4YZPfX5sKKI", "desc": "Test Description 2" }
@@ -26,10 +27,15 @@ var VideoCenterComponent = (function () {
         this.selectedVideo = null;
     };
     ;
+    /*
+    newVideo(){
+      var v: Video = { title: "New Video", url: ""};
+      this.videos.push(v);
+      this.selectedVideo = v;
+    }
+    */
     VideoCenterComponent.prototype.newVideo = function () {
-        var v = { title: "New Video", url: "" };
-        this.videos.push(v);
-        this.selectedVideo = v;
+        this.shownewVideo = false;
     };
     VideoCenterComponent = __decorate([
         core_1.Component({

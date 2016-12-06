@@ -9,15 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var video_service_1 = require('./video.service');
 var VideoCenterComponent = (function () {
-    function VideoCenterComponent() {
+    function VideoCenterComponent(_videoService) {
+        this._videoService = _videoService;
         this.title = "Playlist";
         this.shownewVideo = true;
-        this.videos = [
-            { "title": "First Video", "url": "https://www.youtube.com/embed/YYnf5vJRuUY", "desc": "Test Description 1" },
-            { "title": "Second Video", "url": "https://www.youtube.com/embed/4YZPfX5sKKI", "desc": "Test Description 2" }
-        ];
     }
+    VideoCenterComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this._videoService.getVideos()
+            .subscribe(function (resVideoData) { return _this.videos = resVideoData; });
+    };
     VideoCenterComponent.prototype.onSelectVideo = function (video) {
         this.selectedVideo = video;
         console.log(this.selectedVideo);
@@ -40,8 +43,9 @@ var VideoCenterComponent = (function () {
     VideoCenterComponent = __decorate([
         core_1.Component({
             templateUrl: 'app/videos/video-center.component.html',
+            providers: [video_service_1.VideoService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [video_service_1.VideoService])
     ], VideoCenterComponent);
     return VideoCenterComponent;
 }());

@@ -9,7 +9,7 @@ export class VideoCenterComponent implements OnInit {
   title: string = "Playlist";
   videos : Array<Video>;
   selectedVideo: Video;
-  private shownewVideo: boolean = true;
+  private hidenewVideo: boolean = true;
 
   constructor(private _videoService: VideoService){}
 
@@ -25,15 +25,17 @@ export class VideoCenterComponent implements OnInit {
   onCloseDetailForm(event: any){
     this.selectedVideo = null;
   };
-  /*
-  newVideo(){
-    var v: Video = { title: "New Video", url: ""};
-    this.videos.push(v);
-    this.selectedVideo = v;
-  }
-  */
 
   newVideo(){
-    this.shownewVideo = false;
+    this.hidenewVideo = false;
+  }
+
+  onSubmit(video: Video)
+  {
+    this._videoService.addVideo(video)
+      .subscribe(resNewVideo => {this.videos.push(resNewVideo);
+                                 this.hidenewVideo = true;
+                                 this.selectedVideo = resNewVideo;});
+    
   }
 }

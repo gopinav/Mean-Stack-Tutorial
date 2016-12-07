@@ -14,7 +14,7 @@ var VideoCenterComponent = (function () {
     function VideoCenterComponent(_videoService) {
         this._videoService = _videoService;
         this.title = "Playlist";
-        this.shownewVideo = true;
+        this.hidenewVideo = true;
     }
     VideoCenterComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -30,15 +30,17 @@ var VideoCenterComponent = (function () {
         this.selectedVideo = null;
     };
     ;
-    /*
-    newVideo(){
-      var v: Video = { title: "New Video", url: ""};
-      this.videos.push(v);
-      this.selectedVideo = v;
-    }
-    */
     VideoCenterComponent.prototype.newVideo = function () {
-        this.shownewVideo = false;
+        this.hidenewVideo = false;
+    };
+    VideoCenterComponent.prototype.onSubmit = function (video) {
+        var _this = this;
+        this._videoService.addVideo(video)
+            .subscribe(function (resNewVideo) {
+            _this.videos.push(resNewVideo);
+            _this.hidenewVideo = true;
+            _this.selectedVideo = resNewVideo;
+        });
     };
     VideoCenterComponent = __decorate([
         core_1.Component({

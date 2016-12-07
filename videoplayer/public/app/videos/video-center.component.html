@@ -1,9 +1,9 @@
 
     <div class="row">
         <div class="col-sm-8">  
-            <div *ngIf="!shownewVideo">
+            <div *ngIf="!hidenewVideo">
                 <h2>New Video</h2>
-                <form class="well">
+                <form #form="ngForm" (ngSubmit)="onSubmit(form.value)" class="well">
                     <div class="form-group">
                         <label>Title</label>
                         <input type="text" class="form-control" name="title" ngModel>
@@ -20,7 +20,7 @@
                 </form>
             </div>
                   
-            <video-detail *ngIf="selectedVideo && shownewVideo" (closeForm)="onCloseDetailForm($event)" [video]="selectedVideo"></video-detail>
+            <video-detail *ngIf="selectedVideo && hidenewVideo" (closeForm)="onCloseDetailForm($event)" [video]="selectedVideo"></video-detail>
         </div>
         <div class="col-sm-4">  
             <button type="button" class="btn btn-default" (click)="newVideo()">New </button>      

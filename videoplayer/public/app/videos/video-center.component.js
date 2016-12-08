@@ -45,8 +45,15 @@ var VideoCenterComponent = (function () {
     };
     ;
     VideoCenterComponent.prototype.onDeleteVideoEvent = function (video) {
+        var videoArray = this.videos;
         this._videoService.deleteVideo(video)
-            .subscribe(function (resDeletedVideo) { return video = null; });
+            .subscribe(function (resDeletedVideo) {
+            for (var i = 0; i < videoArray.length; i++) {
+                if (videoArray[i]._id === video._id) {
+                    videoArray.splice(i, 1);
+                }
+            }
+        });
         this.selectedVideo = null;
     };
     ;

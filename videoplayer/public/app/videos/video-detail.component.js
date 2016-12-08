@@ -12,7 +12,8 @@ var core_1 = require('@angular/core');
 var VideoDetailComponent = (function () {
     function VideoDetailComponent() {
         this.editTitle = false;
-        this.closeForm = new core_1.EventEmitter();
+        this.updateVideoEvent = new core_1.EventEmitter();
+        this.deleteVideoEvent = new core_1.EventEmitter();
     }
     VideoDetailComponent.prototype.onTitleClick = function () {
         this.editTitle = true;
@@ -21,14 +22,21 @@ var VideoDetailComponent = (function () {
         this.editTitle = false;
     };
     VideoDetailComponent.prototype.onButtonOkClick = function () {
-        this.closeForm.emit({});
+    };
+    VideoDetailComponent.prototype.updateVideo = function () {
+        console.log(JSON.stringify(this.video));
+        this.updateVideoEvent.emit(this.video);
+    };
+    VideoDetailComponent.prototype.deleteVideo = function () {
+        console.log(JSON.stringify(this.video));
+        this.deleteVideoEvent.emit(this.video);
     };
     VideoDetailComponent = __decorate([
         core_1.Component({
             selector: 'video-detail',
             templateUrl: 'app/videos/video-detail.component.html',
             inputs: ['video'],
-            outputs: ['closeForm']
+            outputs: ['updateVideoEvent', 'deleteVideoEvent']
         }), 
         __metadata('design:paramtypes', [])
     ], VideoDetailComponent);

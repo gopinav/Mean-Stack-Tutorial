@@ -26,14 +26,10 @@ var VideoCenterComponent = (function () {
         console.log(this.selectedVideo);
     };
     ;
-    VideoCenterComponent.prototype.onCloseDetailForm = function (event) {
-        this.selectedVideo = null;
-    };
-    ;
     VideoCenterComponent.prototype.newVideo = function () {
         this.hidenewVideo = false;
     };
-    VideoCenterComponent.prototype.onSubmit = function (video) {
+    VideoCenterComponent.prototype.onSubmitAddVideo = function (video) {
         var _this = this;
         this._videoService.addVideo(video)
             .subscribe(function (resNewVideo) {
@@ -42,6 +38,18 @@ var VideoCenterComponent = (function () {
             _this.selectedVideo = resNewVideo;
         });
     };
+    VideoCenterComponent.prototype.onUpdateVideoEvent = function (video) {
+        this._videoService.updateVideo(video)
+            .subscribe(function (resUpdatedVideo) { return video = resUpdatedVideo; });
+        this.selectedVideo = null;
+    };
+    ;
+    VideoCenterComponent.prototype.onDeleteVideoEvent = function (video) {
+        this._videoService.deleteVideo(video)
+            .subscribe(function (resDeletedVideo) { return video = null; });
+        this.selectedVideo = null;
+    };
+    ;
     VideoCenterComponent = __decorate([
         core_1.Component({
             templateUrl: 'app/videos/video-center.component.html',

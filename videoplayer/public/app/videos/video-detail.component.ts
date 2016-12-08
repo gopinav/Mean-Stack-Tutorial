@@ -4,11 +4,14 @@ import { Video } from './video';
   selector: 'video-detail',
   templateUrl: 'app/videos/video-detail.component.html',
   inputs: ['video'],
-  outputs: ['closeForm']
+  outputs: ['updateVideoEvent','deleteVideoEvent']
 })
 export class VideoDetailComponent { 
+    public video: Video;
     private editTitle:boolean = false;
-    private closeForm = new EventEmitter();
+    private updateVideoEvent = new EventEmitter();
+    private deleteVideoEvent = new EventEmitter();
+    
     onTitleClick(){
         this.editTitle=true;
     }
@@ -16,6 +19,14 @@ export class VideoDetailComponent {
         this.editTitle=false;
     }
     onButtonOkClick(){
-       this.closeForm.emit({});
+      
+    }
+    updateVideo(){
+        console.log(JSON.stringify(this.video));
+        this.updateVideoEvent.emit(this.video);
+    }
+    deleteVideo(){
+        console.log(JSON.stringify(this.video));
+        this.deleteVideoEvent.emit(this.video);
     }
 }

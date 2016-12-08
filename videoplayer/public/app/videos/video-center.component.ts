@@ -6,6 +6,7 @@ import { Video } from './video';
   providers: [VideoService]
 })
 export class VideoCenterComponent implements OnInit { 
+  updateVideo : Video;
   title: string = "Playlist";
   videos : Array<Video>;
   selectedVideo: Video;
@@ -22,15 +23,13 @@ export class VideoCenterComponent implements OnInit {
     this.selectedVideo = video;
     console.log(this.selectedVideo);
   };
-  onCloseDetailForm(event: any){
-    this.selectedVideo = null;
-  };
+  
 
   newVideo(){
     this.hidenewVideo = false;
   }
 
-  onSubmit(video: Video)
+  onSubmitAddVideo(video: Video)
   {
     this._videoService.addVideo(video)
       .subscribe(resNewVideo => {this.videos.push(resNewVideo);
@@ -38,4 +37,16 @@ export class VideoCenterComponent implements OnInit {
                                  this.selectedVideo = resNewVideo;});
     
   }
+
+  onUpdateVideoEvent(video: any){
+    this._videoService.updateVideo(video)
+      .subscribe(resUpdatedVideo => video = resUpdatedVideo);  
+    this.selectedVideo = null;
+  };
+
+  onDeleteVideoEvent(video: any){
+    this._videoService.deleteVideo(video)
+      .subscribe(resDeletedVideo => video = null);  
+    this.selectedVideo = null;
+  };
 }

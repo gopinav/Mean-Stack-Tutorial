@@ -16,6 +16,8 @@ var VideoService = (function () {
         this._http = _http;
         this._getUrl = "/api/videos";
         this._postUrl = "/api/video";
+        this._putUrl = "/api/video/";
+        this._deleteUrl = "/api/video/";
     }
     VideoService.prototype.getVideos = function () {
         return this._http.get(this._getUrl)
@@ -25,6 +27,16 @@ var VideoService = (function () {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
         return this._http.post(this._postUrl, JSON.stringify(video), options)
+            .map(function (response) { return response.json(); });
+    };
+    VideoService.prototype.updateVideo = function (video) {
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this._http.put(this._putUrl + video._id, JSON.stringify(video), options)
+            .map(function (response) { return response.json(); });
+    };
+    VideoService.prototype.deleteVideo = function (video) {
+        return this._http.delete(this._deleteUrl + video._id)
             .map(function (response) { return response.json(); });
     };
     VideoService = __decorate([

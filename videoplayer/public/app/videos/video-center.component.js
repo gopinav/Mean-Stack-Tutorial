@@ -22,6 +22,7 @@ var VideoCenterComponent = (function () {
             .subscribe(function (resVideoData) { return _this.videos = resVideoData; });
     };
     VideoCenterComponent.prototype.onSelectVideo = function (video) {
+        this.hidenewVideo = true;
         this.selectedVideo = video;
         console.log(this.selectedVideo);
     };

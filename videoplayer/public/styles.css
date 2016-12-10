@@ -12,3 +12,8 @@ h2, h3 {
 body {
   margin: 2em;
 }
+
+.nav-pills > li > a {
+  cursor: pointer;
+  color:  black;
+}

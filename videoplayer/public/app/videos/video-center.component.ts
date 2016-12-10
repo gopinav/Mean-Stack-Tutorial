@@ -20,6 +20,7 @@ export class VideoCenterComponent implements OnInit {
   }
 
   onSelectVideo(video: any){
+    this.hidenewVideo = true;
     this.selectedVideo = video;
     console.log(this.selectedVideo);
   };

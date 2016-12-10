@@ -20,6 +20,10 @@ app.use(bodyParser.json());
 app.use('/', index);
 app.use('/api', videos);
 
+app.use('*',function (req, res) {
+    res.redirect('/');
+});
+
 app.listen(port, function(){
     console.log("Server running on localhost:" + port);
 })
